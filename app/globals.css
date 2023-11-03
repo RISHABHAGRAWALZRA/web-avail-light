@@ -1,27 +1,116 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background:
+    rgb(232, 241, 252);
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: rgb(43, 222, 226);
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+}
+
+.logotitle {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  align-self: center;
+  width: 50px;
+  height: 50px;
+  margin-right: 16px;
+}
+
+.heading {
+  color: rgb(56, 60, 77);
+}
+
+.linkImg {
+  padding-top: 50px;
+}
+
+.block {
+  display: flex;
+}
+
+.blockImg {
+  padding: 10px;
+}
+
+.blockspace {
+  display: flex;
+  margin: 20px;
+  overflow: scroll;
+}
+
+.blockNumber {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+
+.matrixspace {
+  margin: 50px;
+  width: auto;
+  height: 500px;
+  display: grid;
+  overflow: scroll;
+  grid-template-columns: repeat(256, 1fr);
+}
+
+.cell {
+  margin: 2px;
+}
+
+.run {
+
+
+  background-color: #e1ecf4;
+  border-radius: 3px;
+  border: 1px solid #7aa7c7;
+  box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #39739d;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+
+
+
+}
+
+.run:hover,
+.run:focus {
+  background-color: #b3d3ea;
+  color: #2c5777;
+}
+
+.run:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.run:active {
+  background-color: #a0c7e4;
+  box-shadow: none;
+  color: #2c5777;
 }

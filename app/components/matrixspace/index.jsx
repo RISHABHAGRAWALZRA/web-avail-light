@@ -23,13 +23,16 @@ export function MatrixSpace(props) {
         return "#d1d1d1"
     }
 
-    return (
-        <div className="matrixspace">
+    return (<div className="matrixspace">
+        <h1>Data Sampling</h1>
+        <div className="matrix">
+
             {
                 matrix.map((ele, i) => (
-                    <div style={{ backgroundColor: colorCheck(i) }} key={i} className="cell">C</div>
+                    <div style={{ backgroundColor: colorCheck(i), width: 5, height: 5 }} key={i} className="cell"></div>
                 ))
             }
         </div>
+    </div>
     )
 }

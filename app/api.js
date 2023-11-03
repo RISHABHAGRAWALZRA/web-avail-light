@@ -2,7 +2,7 @@
 import { ApiPromise, WsProvider } from '@polkadot/api'
 
 export async function createApi() {
-    const provider = new WsProvider("wss://biryani-devnet.avail.tools:443/ws");
+    const provider = new WsProvider("wss://kate.avail.tools/ws");
     return ApiPromise.create({
         provider,
         // Pass the below flag to true 👇 to see initial warning about api / rpc decorations

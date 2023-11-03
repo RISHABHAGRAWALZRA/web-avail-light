@@ -54,14 +54,19 @@ body {
   text-align: center;
 }
 
-
 .matrixspace {
   margin: 50px;
   width: auto;
-  height: 500px;
+  align-content: center;
+
+}
+
+.matrix {
   display: grid;
   overflow: scroll;
+  border: 3px solid #00537c;
   grid-template-columns: repeat(256, 1fr);
+  height: 500px;
 }
 
 .cell {

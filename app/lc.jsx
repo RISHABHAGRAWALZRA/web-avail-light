@@ -39,7 +39,6 @@ export default function LC() {
         }
         let cellList = []
         let randomPointList = randomUniqueNum(maxCellCount, size)
-        //console.log(randomPointList)
         randomPointList.forEach((p) => {
             const row = Math.floor(p / c)
             const col = p - row * c
@@ -74,14 +73,16 @@ export default function LC() {
 
         const unsubscribe = await api.rpc.chain.subscribeFinalizedHeads(async (header) => {
 
+
             const blockNumber = header.number.toString()
             const extension = JSON.parse(header.extension)
+            console.log("Abhi2:", extension)
             const commitment = extension.v1.commitment
             const kateCommitment = commitment.commitment.split('0x')[1]
             const r = commitment.rows
             const c = commitment.cols
 
-            //console.log(`Chain is at block: #${header.extension}`);
+
             //fetching block hash from number 
             const blockHash = (await api.rpc.chain.getBlockHash(header.number)).toString();
             console.log(`New Block with hash: ${blockHash}, Number: ${blockNumber} `)
@@ -91,7 +92,7 @@ export default function LC() {
 
             //Query data proof for sample 0,0
             const cells = generateRandomCells(r, c, SAMPLE_SIZE)
-            //console.log(cells)
+
             const kateProof = await api.rpc.kate.queryProof(cells, blockHash);
             const kate_Proof = Uint8Array.from(kateProof)
             const kate_commitment = Uint8Array.from(kateCommitment.match(/.{1,2}/g).map((byte) => parseInt(byte, 16)))
@@ -103,13 +104,13 @@ export default function LC() {
             for (let i = 0; i < SAMPLE_SIZE; i++) {
                 proofs.push(kate_Proof.slice(i * KATE_PROOF_SIZE, (i + 1) * KATE_PROOF_SIZE))
             }
-            //console.log(proofs, commitments)
+
             let verfiedCount = 0
             cells.forEach((cell, i) => {
                 if (check(proofs[i], commitments[cell.row], c, cell.row, cell.col)) { verfiedCount++ }
             })
             const confidence = 100 * (1 - (1 / (Math.pow(2, verfiedCount))))
-            //console.log(verfiedCount)
+
             setMatrix({
                 row: r * EXTENSION_FACTOR,
                 col: c,
@@ -130,18 +131,13 @@ export default function LC() {
             totalCellCount: tCount,
         };
 
-
-        //setBlockList(newBlockList)
-
         setBlockList((list) => {
             let newBlockList = []
-            console.log(list.length)
             for (let i = list.length - 1; i >= 0 && i > list.length - 8; i--) {
                 newBlockList.push(list[i])
             }
             newBlockList.reverse()
             newBlockList.push(newBlock)
-            console.log(newBlockList)
             return newBlockList
         })
     }

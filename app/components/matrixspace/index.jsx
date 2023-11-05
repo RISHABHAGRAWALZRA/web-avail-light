@@ -1,3 +1,4 @@
+import { Cell } from "./cell"
 export function MatrixSpace(props) {
 
     let r = props.matrix.row
@@ -12,7 +13,7 @@ export function MatrixSpace(props) {
         })
     }
     const colorCheck = (i) => {
-        console.log("Checking....")
+        //console.log("Checking....")
         let row = Math.floor(i / 256)
         let col = i % 256
         if (checkForSampleCell(row, col)) {
@@ -29,7 +30,7 @@ export function MatrixSpace(props) {
 
             {
                 matrix.map((ele, i) => (
-                    <div style={{ backgroundColor: colorCheck(i), width: 5, height: 5 }} key={i} className="cell"></div>
+                    <Cell color={colorCheck(i)} key={i} />
                 ))
             }
         </div>

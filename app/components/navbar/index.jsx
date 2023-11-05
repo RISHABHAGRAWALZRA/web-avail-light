@@ -31,7 +31,7 @@ const Navbar = (props) => {
                     height={width < 1024 ? "30" : "60"}
                     className="logo"
                 />
-                <h2 className="heading">Avail Web Light Client</h2>
+                <h1 className="heading">Avail Web Light Client</h1>
             </div>
             <button className="run" onClick={() => { running ? (stop(), setRunning(false)) : run() }}>{running ? "STOP" : "RUN"}</button>
         </div>

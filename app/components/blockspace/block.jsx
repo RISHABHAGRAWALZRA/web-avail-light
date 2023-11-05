@@ -5,7 +5,7 @@ export function Block(props) {
     return (
         <div className="block">
             <Image
-                src="/6.png"
+                src="/link.png"
                 alt="link"
                 width="70"
                 height="30"

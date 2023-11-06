@@ -56,9 +56,14 @@ body {
 
 .matrixspace {
   margin: 50px;
-  width: auto;
-  height: auto;
   justify-content: center;
+}
+
+.canvas {
+  border: 2px solid #00537c;
+  overflow: scroll;
+  width: 100%;
+  height: 100%;
 }
 
 .matrix {

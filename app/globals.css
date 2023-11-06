@@ -2,17 +2,27 @@ body {
   background:
     #e9f2fc;
   color: #383C4D;
-  margin: 0;
-  padding: 0;
+  margin: 2%;
 }
+
+
 
 .navbar {
   width: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px;
 }
+
+.blockspace {
+  margin: 3%;
+}
+
+.matrixspace {
+  margin: 3%;
+}
+
+
 
 .logotitle {
   display: flex;
@@ -21,8 +31,8 @@ body {
 
 .logo {
   align-self: center;
-  width: 50px;
-  height: 50px;
+  width: 15%;
+  height: 15%;
   margin-right: 16px;
 }
 
@@ -30,33 +40,52 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.linkImg {
-  padding-top: 50px;
+
+
+.blockTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.block {
+.blockchain {
   display: flex;
+  overflow: scroll;
+}
+
+.blockLinkImg {
+  display: flex;
+  align-items: center;
 }
 
 .blockImg {
   padding: 10px;
 }
 
-.blockspace {
-  display: flex;
-  margin: 20px;
-  overflow: scroll;
-}
-
 .blockNumber {
   margin: 0;
   padding: 0;
-  text-align: center;
+  margin-left: 35px;
 }
 
-.matrixspace {
-  margin: 50px;
-  justify-content: center;
+.linkImg {}
+
+.block {}
+
+
+
+
+.matrix {
+  display: grid;
+  overflow: scroll;
+  border: 3px solid #00537c;
+  grid-template-columns: repeat(256, auto);
+}
+
+.cell {
+  margin: 1%;
+  width: 3px;
+  height: 3px;
 }
 
 .canvas {
@@ -66,18 +95,7 @@ body {
   height: 100%;
 }
 
-.matrix {
-  display: grid;
-  overflow: scroll;
-  border: 3px solid #00537c;
-  grid-template-columns: repeat(256, 1fr);
-}
 
-.cell {
-  margin: 1px;
-  width: 3px;
-  height: 3px;
-}
 
 .run {
 

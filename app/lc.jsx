@@ -131,15 +131,17 @@ export default function LC() {
             totalCellCount: tCount,
         };
 
-        setBlockList((list) => {
-            let newBlockList = []
-            for (let i = list.length - 1; i >= 0 && i > list.length - 8; i--) {
-                newBlockList.push(list[i])
-            }
-            newBlockList.reverse()
-            newBlockList.push(newBlock)
-            return newBlockList
-        })
+        // setBlockList((list) => {
+        //     let newBlockList = []
+        //     for (let i = list.length - 1; i >= 0 && i > list.length - 8; i--) {
+        //         newBlockList.push(list[i])
+        //     }
+        //     newBlockList.reverse()
+        //     newBlockList.push(newBlock)
+        //     return newBlockList
+        // })
+
+        setBlockList(blockList => [...blockList, newBlock])
     }
 
 

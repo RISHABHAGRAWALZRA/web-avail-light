@@ -27,7 +27,7 @@ export function MatrixSpace(props) {
     // }
 
     return (<div className="matrixspace">
-        <h1>Data Sampling</h1>
+        <h2>Data Sampling</h2>
         <div className="canvas">
             <Canvas matrix={props.matrix} />
         </div>

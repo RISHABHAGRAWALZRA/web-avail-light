@@ -4,23 +4,24 @@ export function Block(props) {
     const block = props.block
     return (
         <div className="block">
-            <Image
-                src="/link.png"
-                alt="link"
-                width="70"
-                height="30"
-                className="linkImg"
-            />
-            <div>
+            <div className="blockLinkImg">
+                <Image
+                    src="/link.png"
+                    alt="link"
+                    width={40}
+                    height={20}
+                    className="linkImg"
+                />
+
                 <Image
                     src="/block.png"
                     alt="block"
-                    width="120"
-                    height="120"
+                    width={70}
+                    height={70}
                     className="blockImg"
                 />
-                <h3 className="blockNumber">#{block.blockNumber}</h3>
             </div>
+            <h3 className="blockNumber">#{block.blockNumber}</h3>
         </div>
     )
 }

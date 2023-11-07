@@ -1,11 +1,17 @@
+'use client'
 import { useEffect, useRef, useState } from "react"
 const SCALE_FACTOR = 3;
 const MATRIX_WIDTH_EXTENDED = 256;
 const MATRIX_HEIGHT_EXTENDED = 512;
 export function Canvas(props) {
 
-    const [height, setHeight] = useState(window.innerHeight);
-    const [width, setWidth] = useState(window.innerWidth);
+    const [height, setHeight] = useState(0);
+    const [width, setWidth] = useState(0);
+
+    useEffect(() => {
+        setHeight(window.innerHeight)
+        setHeight(window.innerWidth)
+    }, [])
 
     useEffect(() => {
         const handleResize = () => {

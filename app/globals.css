@@ -3,11 +3,12 @@ body {
     #e9f2fc;
   color: #383C4D;
   margin: 1%;
-  height: 100%;
-  justify-content: space-between;
 }
 
 
+.lc {
+  width: auto;
+}
 
 .navbar {
   width: auto;
@@ -19,6 +20,7 @@ body {
 
 .blockspace {
   margin: 2%;
+  width: auto;
 }
 
 .matrixspace {
@@ -44,16 +46,30 @@ body {
 }
 
 
+h3 {
+  overflow: scroll;
+  margin: 0;
+  padding: 0;
+}
 
-.blockTitle {
+
+
+.blockInfo {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  /* border: 3px solid #00537c; */
 }
 
 .blockchain {
   display: flex;
   overflow: scroll;
+  flex-basis: 100%;
+}
+
+.latestBlock {
+  border: 3px solid #00537c;
+  flex-basis: 100%;
+  padding: 10px;
+  width: 0px;
 }
 
 .blockLinkImg {
@@ -70,6 +86,18 @@ body {
   padding: 0;
   margin-left: 35px;
 }
+
+@media only screen and (max-width: 500px) {
+  .blockInfo {
+    flex-direction: column;
+  }
+
+  .latestBlock {
+    width: auto;
+  }
+}
+
+
 
 .linkImg {}
 
@@ -88,13 +116,19 @@ body {
   overflow: scroll;
   border: 3px solid #00537c;
   grid-template-columns: repeat(256, auto);
+} */
+
+.matrix {
+  width: 100%;
 }
 
 .cell {
-  margin: 1%;
-  width: 3px;
-  height: 3px;
-} */
+  margin: 0%;
+  width: 10px;
+  height: 1px;
+  border: 1px #00537c;
+
+}
 
 
 .run {

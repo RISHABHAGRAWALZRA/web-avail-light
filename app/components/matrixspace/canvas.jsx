@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useRef, useState } from "react"
-const SCALE_FACTOR = 3;
+const SCALE_WIDTH = 1;
+const SCALE_HEIGHT = 0.5
 const MATRIX_WIDTH_EXTENDED = 256;
 const MATRIX_HEIGHT_EXTENDED = 512;
 export function Canvas(props) {
@@ -8,12 +9,11 @@ export function Canvas(props) {
     const [height, setHeight] = useState(0);
     const [width, setWidth] = useState(0);
 
-    useEffect(() => {
-        setHeight(window.innerHeight)
-        setHeight(window.innerWidth)
-    }, [])
+
 
     useEffect(() => {
+        setHeight(window.innerHeight)
+        setWidth(window.innerWidth)
         const handleResize = () => {
             console.log(width, height)
             setHeight(window.innerHeight);
@@ -25,7 +25,7 @@ export function Canvas(props) {
         return () => {
             window.removeEventListener("resize", handleResize);
         };
-    }, []);
+    },);
 
     const ref = useRef()
 
@@ -48,20 +48,20 @@ export function Canvas(props) {
 
         ctx.save();
         ctx.strokeStyle = "#ced8ff";
-        for (let i = 0; i < MATRIX_HEIGHT_EXTENDED; i += SCALE_FACTOR) {
+        for (let i = 0; i < MATRIX_HEIGHT_EXTENDED * SCALE_HEIGHT; i += SCALE_HEIGHT) {
             ctx.beginPath();
             ctx.moveTo(0, i);
-            ctx.lineTo(MATRIX_WIDTH_EXTENDED, i);
+            ctx.lineTo(MATRIX_WIDTH_EXTENDED * SCALE_WIDTH, i);
             ctx.stroke();
         }
         ctx.restore();
 
         ctx.save();
         ctx.strokeStyle = "#ced8ff";
-        for (let i = 0; i < MATRIX_WIDTH_EXTENDED; i += SCALE_FACTOR) {
+        for (let i = 0; i < MATRIX_WIDTH_EXTENDED * SCALE_WIDTH; i += SCALE_WIDTH) {
             ctx.beginPath();
             ctx.moveTo(i, 0);
-            ctx.lineTo(i, MATRIX_HEIGHT_EXTENDED);
+            ctx.lineTo(i, MATRIX_HEIGHT_EXTENDED * SCALE_HEIGHT);
             ctx.stroke();
         }
         ctx.restore();
@@ -72,11 +72,10 @@ export function Canvas(props) {
                 if (i < r && j < c) {
                     if (checkForSampleCell(i, j)) {
                         ctx.fillStyle = 'green'
-                        ctx.fillRect(j, i, SCALE_FACTOR, SCALE_FACTOR);
                     } else {
                         ctx.fillStyle = 'red'
-                        ctx.fillRect(j, i, SCALE_FACTOR, SCALE_FACTOR)
                     }
+                    ctx.fillRect(j * SCALE_WIDTH, i * SCALE_HEIGHT, SCALE_WIDTH, SCALE_HEIGHT);
                 }
             }
         }

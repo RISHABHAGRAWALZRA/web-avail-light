@@ -15,6 +15,12 @@ const SAMPLE_SIZE = 5
 
 export default function LC() {
     const [running, setRunning] = useState(false)
+    const [latestBlock, setLatestBlock] = useState({
+        number: "",
+        hash: "",
+        totalCellCount: "",
+        confidence: ""
+    })
     const [stop, setStop] = useState()
     const [blockList, setBlockList] = useState([])
     const [matrix, setMatrix] = useState(
@@ -29,6 +35,8 @@ export default function LC() {
     useEffect(() => {
         init()
     })
+
+    const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
     const generateRandomCells = (r, c, count) => {
         const extendedRowCount = r * 2
@@ -106,10 +114,15 @@ export default function LC() {
             }
 
             let verfiedCount = 0
-            cells.forEach((cell, i) => {
-                if (check(proofs[i], commitments[cell.row], c, cell.row, cell.col)) { verfiedCount++ }
+            cells.forEach(async (cell, i) => {
+                if (check(proofs[i], commitments[cell.row], c, cell.row, cell.col)) {
+                    verfiedCount++
+                    const confidence = 100 * (1 - (1 / (Math.pow(2, verfiedCount))))
+                    await sleep(i * 1000)
+                    console.log("run: ", confidence)
+                    setLatestBlock({ hash: blockHash, number: blockNumber, totalCellCount: (r * EXTENSION_FACTOR) * c, confidence: confidence })
+                }
             })
-            const confidence = 100 * (1 - (1 / (Math.pow(2, verfiedCount))))
 
             setMatrix({
                 row: r * EXTENSION_FACTOR,
@@ -140,15 +153,20 @@ export default function LC() {
         //     newBlockList.push(newBlock)
         //     return newBlockList
         // })
-
+        setLatestBlock({
+            hash: hash,
+            number: number,
+            totalCellCount: tCount,
+            confidence: 0
+        })
         setBlockList(blockList => [...blockList, newBlock])
     }
 
 
     return (
-        <div className="LC">
+        <div className="lc">
             <Navbar runBtn={running} run={run} stop={stop} setRunning={setRunning} />
-            <BlockSpace blockList={blockList} />
+            <BlockSpace latestBlock={latestBlock} blockList={blockList} />
             <MatrixSpace matrix={matrix} />
         </div>
     )

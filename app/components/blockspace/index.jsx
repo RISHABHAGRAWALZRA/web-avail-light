@@ -4,6 +4,7 @@ import LatestBlock from "./latestBlock"
 export function BlockSpace(props) {
   const bottomRef = useRef(null)
   const blockList = props.blockList
+  //console.log(blockList.length)
 
   useEffect(() => {
     bottomRef.current
@@ -13,7 +14,8 @@ export function BlockSpace(props) {
     <h2>Blockchain</h2>
     <div className="blockInfo">
       <div className="blockchain">{
-        blockList.map((block, index) => (<Block key={index} block={block}></Block>))
+
+        blockList.map((block, index) => (<Block key={index} progress={blockList.length > index + 1 ? 100 : 0} block={block}></Block>))
       }
         <div ref={bottomRef} />
       </div>

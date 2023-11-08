@@ -159,6 +159,8 @@ export default function LC() {
             totalCellCount: tCount,
             confidence: 0
         })
+        // blockList.reverse()
+        // console.log(blockList)
         setBlockList(blockList => [...blockList, newBlock])
     }
 

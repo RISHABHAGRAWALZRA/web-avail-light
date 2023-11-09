@@ -15,7 +15,7 @@ export function Canvas(props) {
         setHeight(window.innerHeight)
         setWidth(window.innerWidth)
         const handleResize = () => {
-            console.log(width, height)
+            //console.log(width, height)
             setHeight(window.innerHeight);
             setWidth(window.innerWidth);
         };

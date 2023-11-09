@@ -8,8 +8,8 @@ export function MatrixSpace(props) {
 
 
     let matrix = new Array(r * c).fill(1)
-    let row = new Array(256).fill(1)
-    let col = new Array(256).fill(1)
+    let row = new Array(r).fill(1)
+    let col = new Array(c).fill(1)
 
     const checkForSampleCell = (row, col) => {
         return cells.some((cell) => {

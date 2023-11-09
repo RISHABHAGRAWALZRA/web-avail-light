@@ -15,7 +15,9 @@ export function BlockSpace(props) {
     <div className="blockInfo">
       <div className="blockchain">{
 
-        blockList.map((block, index) => (<Block key={index} progress={blockList.length > index + 1 ? 100 : 0} block={block}></Block>))
+        blockList.map((block, index) => (
+          <Block key={index} progress={blockList.length > index + 1 ? 100 : 0} block={block} />
+        ))
       }
         <div ref={bottomRef} />
       </div>

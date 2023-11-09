@@ -81,7 +81,7 @@ export default function LC() {
 
         const unsubscribe = await api.rpc.chain.subscribeFinalizedHeads(async (header) => {
 
-
+            //Extracting the data out from header
             const blockNumber = header.number.toString()
             const extension = JSON.parse(header.extension)
             console.log("Abhi2:", extension)
@@ -115,7 +115,10 @@ export default function LC() {
 
             let verfiedCount = 0
             cells.forEach(async (cell, i) => {
-                if (check(proofs[i], commitments[cell.row], c, cell.row, cell.col)) {
+                console.log(proofs[i], commitments[cell.row], c, cell.row, cell.col)
+                const res = check(proofs[i], commitments[cell.row], c, cell.row, cell.col)
+                console.log(res)
+                if (res) {
                     verfiedCount++
                     const confidence = 100 * (1 - (1 / (Math.pow(2, verfiedCount))))
                     await sleep(i * 1000)

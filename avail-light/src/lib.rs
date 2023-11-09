@@ -27,13 +27,13 @@ pub fn check(proof: Vec<u8>, commitment: Vec<u8>, width: u16, row: u32, col: u16
     };
     let kate_commitment = commitment.try_into().unwrap();
 
-    let pp = public_params(1024);
+    let pp = public_params();
     return verify(&pp, width, &kate_commitment, &cell).unwrap();
 }
 
 static SRS_DATA: Lazy<Mutex<HashMap<usize, PublicParameters>>> =
     Lazy::new(|| Mutex::new(HashMap::new()));
-pub fn public_params(max_degree: usize) -> PublicParameters {
+pub fn public_params2(max_degree: usize) -> PublicParameters {
     let mut srs_data_locked = SRS_DATA.lock().unwrap();
     srs_data_locked
         .entry(max_degree)
@@ -44,4 +44,10 @@ pub fn public_params(max_degree: usize) -> PublicParameters {
             PublicParameters::setup(max_degree, &mut rng).unwrap()
         })
         .clone()
+}
+
+pub fn public_params() -> PublicParameters {
+    let pp_bytes = include_bytes!("pp_1024.data");
+    PublicParameters::from_slice(pp_bytes)
+        .expect("Deserialising of public parameters should work for serialised pp")
 }
